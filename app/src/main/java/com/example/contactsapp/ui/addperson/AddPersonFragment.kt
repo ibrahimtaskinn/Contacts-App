@@ -38,8 +38,8 @@ class AddPersonFragment : Fragment() {
         return binding.root
     }
 
-    fun btnsave(person_name: String, person_number: String) {
-        viewModel.savePerson(person_name, person_number)
+    fun btnsave(person_name: String, person_number: String, person_group: String) {
+        viewModel.savePerson(person_name, person_number, person_group)
     }
 
     override fun onDestroyView() {

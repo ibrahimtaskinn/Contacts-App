@@ -14,8 +14,8 @@ class AddPersonViewModel @Inject constructor(private val repository: PersonDaoRe
 
     val navigateToHome = MutableLiveData<Boolean>()
 
-    fun savePerson(person_name: String, person_number: String) {
-        val person = Persons(0, person_name, person_number)
+    fun savePerson(person_name: String, person_number: String, person_group: String) {
+        val person = Persons(0, person_name, person_number, person_group)
         viewModelScope.launch {
             repository.savePerson(person)
             navigateToHome.postValue(true)

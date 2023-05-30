@@ -45,8 +45,8 @@ class DetailFragment : Fragment() {
         return binding.root
     }
 
-    fun btnupdate(person_id: Int, person_name: String, person_number: String) {
-        viewModel.updatePerson(person_id, person_name, person_number)
+    fun btnupdate(person_id: Int, person_name: String, person_number: String, person_group: String) {
+        viewModel.updatePerson(person_id, person_name, person_number, person_group)
     }
 
     override fun onDestroyView() {

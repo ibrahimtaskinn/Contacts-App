@@ -16,6 +16,10 @@ data class Persons(
     @NotNull var person_name: String = "",
 
     @ColumnInfo(name = "person_number")
-    @NotNull var person_number: String = ""
+    @NotNull var person_number: String = "",
+
+    @ColumnInfo(name = "person_group")
+    @NotNull var person_group: String = ""
+
 ) : Serializable
 
