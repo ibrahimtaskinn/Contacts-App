@@ -16,6 +16,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.example.contactsapp.R
 import com.example.contactsapp.databinding.FragmentHomeBinding
 import com.example.contactsapp.ui.adapter.PersonsAdapter
@@ -35,8 +36,8 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         _binding = DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false)
         binding.homeFragment = this
 
-        binding.homeToolbarTitle = "Kişiler"
-        (activity as AppCompatActivity).setSupportActionBar(binding.Hometoolbar)
+        //binding.homeToolbarTitle = "Kişiler"
+        //(activity as AppCompatActivity).setSupportActionBar(binding.Hometoolbar)
 
         viewModel.personsList.observe(viewLifecycleOwner){
             val adapter = PersonsAdapter(requireContext(), it, viewModel)
@@ -60,7 +61,12 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         return binding.root
     }
 
-    fun fabClick(it : View) {
+   /** override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.FloatActionButton.setOnClickListener(fabClick())
+    }*/
+
+    fun fabClick(it: View) {
         Navigation.skip(it, R.id.action_homeFragment_to_addPersonFragment)
     }
 

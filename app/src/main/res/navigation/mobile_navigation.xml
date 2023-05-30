@@ -9,7 +9,14 @@
         android:id="@+id/nav_home"
         android:name="com.example.contactsapp.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+    <action
+        android:id="@+id/action_homeFragment_to_addPersonFragment"
+        app:destination="@id/addPersonFragment" />
+    <action
+        android:id="@+id/action_homeFragment_to_detailFragment"
+        app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_family"
         android:name="com.example.contactsapp.ui.family.FamilyFragment"
@@ -35,4 +42,26 @@
         android:name="com.example.contactsapp.ui.work.WorkFragment"
         android:label="Work"
         tools:layout="@layout/fragment_work" />
+
+    <fragment
+        android:id="@+id/addPersonFragment"
+        android:name="com.example.contactsapp.ui.addperson.AddPersonFragment"
+        android:label="Add Person"
+        tools:layout="@layout/fragment_add_person" >
+        <action
+            android:id="@+id/action_addPersonFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.contactsapp.ui.detail.DetailFragment"
+        android:label="Update"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="person"
+            app:argType="com.example.contactsapp.data.entity.Persons" />
+        <action
+            android:id="@+id/action_detailFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
 </navigation>

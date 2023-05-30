@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.contactsapp.R
 import com.example.contactsapp.databinding.FragmentDetailBinding
+import com.example.contactsapp.ui.detail.DetailFragmentDirections.actionDetailFragmentToNavHome
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,7 +28,7 @@ class DetailFragment : Fragment() {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
 
         binding.detailFragment = this
-        binding.detailToolbarTitle = "Kişi Detay"
+        //binding.detailToolbarTitle = "Kişi Detay"
 
         val bundle: DetailFragmentArgs by navArgs()
         val getPerson = bundle.person
@@ -36,7 +37,7 @@ class DetailFragment : Fragment() {
 
         viewModel.navigateToHome.observe(viewLifecycleOwner, { shouldNavigate ->
             if (shouldNavigate) {
-                findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToHomeFragment())
+                findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToNavHome())
                 viewModel.doneNavigating()
             }
         })
