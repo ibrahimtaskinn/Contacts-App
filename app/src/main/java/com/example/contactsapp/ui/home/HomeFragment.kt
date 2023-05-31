@@ -10,13 +10,12 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.contactsapp.R
 import com.example.contactsapp.databinding.FragmentHomeBinding
 import com.example.contactsapp.ui.adapter.PersonsAdapter
@@ -36,13 +35,19 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         _binding = DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false)
         binding.homeFragment = this
 
-        //binding.homeToolbarTitle = "Kişiler"
-        //(activity as AppCompatActivity).setSupportActionBar(binding.Hometoolbar)
-
         viewModel.personsList.observe(viewLifecycleOwner){
             val adapter = PersonsAdapter(requireContext(), it, viewModel)
             binding.personsAdapter = adapter
         }
+
+        // Add observer for navigation event
+        viewModel.navigateToDetailsEvent.observe(viewLifecycleOwner, { person ->
+            person?.let {
+                val nav = HomeFragmentDirections.actionHomeFragmentToDetailFragment(it)
+                findNavController().navigate(nav)
+                viewModel.resetNavigateToDetailsEvent()
+            }
+        })
 
         requireActivity().addMenuProvider(object : MenuProvider{
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -61,11 +66,6 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         return binding.root
     }
 
-   /** override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.FloatActionButton.setOnClickListener(fabClick())
-    }*/
-
     fun fabClick(it: View) {
         Navigation.skip(it, R.id.action_homeFragment_to_addPersonFragment)
     }
@@ -83,8 +83,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
     override fun onResume() {
         super.onResume()
-        viewModel.loadperson()
-        Log.e("Kişi Anasayfa", "Dönüldü")
+        viewModel.loadPersons()
     }
 
     override fun onDestroyView() {

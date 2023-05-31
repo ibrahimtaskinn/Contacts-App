@@ -21,27 +21,62 @@
         android:id="@+id/nav_family"
         android:name="com.example.contactsapp.ui.family.FamilyFragment"
         android:label="Family"
-        tools:layout="@layout/fragment_family" />
+        tools:layout="@layout/fragment_family" >
+        <action
+            android:id="@+id/action_nav_family_to_addPersonFragment"
+            app:destination="@id/addPersonFragment" />
+        <action
+            android:id="@+id/action_nav_family_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_friends"
         android:name="com.example.contactsapp.ui.friends.FriendsFragment"
         android:label="Friends"
-        tools:layout="@layout/fragment_friends" />
+        tools:layout="@layout/fragment_friends" >
+        <action
+            android:id="@+id/action_nav_friends_to_detailFragment"
+            app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_nav_friends_to_addPersonFragment"
+            app:destination="@id/addPersonFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_school"
         android:name="com.example.contactsapp.ui.school.SchoolFragment"
         android:label="School"
-        tools:layout="@layout/fragment_school" />
+        tools:layout="@layout/fragment_school" >
+        <action
+            android:id="@+id/action_nav_school_to_detailFragment"
+            app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_nav_school_to_addPersonFragment"
+            app:destination="@id/addPersonFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_social"
         android:name="com.example.contactsapp.ui.social.SocialFragment"
         android:label="Social"
-        tools:layout="@layout/fragment_social" />
+        tools:layout="@layout/fragment_social" >
+        <action
+            android:id="@+id/action_nav_social_to_detailFragment"
+            app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_nav_social_to_addPersonFragment"
+            app:destination="@id/addPersonFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_work"
         android:name="com.example.contactsapp.ui.work.WorkFragment"
         android:label="Work"
-        tools:layout="@layout/fragment_work" />
+        tools:layout="@layout/fragment_work" >
+        <action
+            android:id="@+id/action_nav_work_to_addPersonFragment"
+            app:destination="@id/addPersonFragment" />
+        <action
+            android:id="@+id/action_nav_work_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/addPersonFragment"

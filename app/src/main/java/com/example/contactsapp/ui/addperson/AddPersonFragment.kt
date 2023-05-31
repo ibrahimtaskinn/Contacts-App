@@ -26,7 +26,6 @@ class AddPersonFragment : Fragment() {
         _binding = DataBindingUtil.inflate(inflater,R.layout.fragment_add_person, container, false)
 
         binding.addPersonFragment = this
-        //binding.addPersonToolbarTitle = "Kişi Kayıt"
 
         viewModel.navigateToHome.observe(viewLifecycleOwner, { shouldNavigate ->
             if (shouldNavigate) {

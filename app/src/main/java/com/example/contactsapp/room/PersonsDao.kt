@@ -20,4 +20,9 @@ interface PersonsDao {
 
     @Query("SELECT * FROM Persons WHERE person_name LIKE :search")
     suspend fun searchPerson(search: String): List<Persons>
+
+    @Query("SELECT * FROM Persons WHERE person_group IN (:groups) AND person_name LIKE :searchQuery")
+    suspend fun searchPersonByGroup(groups: List<String>, searchQuery: String): List<Persons>
+    @Query("SELECT * FROM Persons WHERE person_group = :group")
+    suspend fun getPersonsByGroup(group: String): List<Persons>
 }

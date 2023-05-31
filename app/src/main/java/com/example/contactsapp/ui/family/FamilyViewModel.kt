@@ -1,15 +1,47 @@
 package com.example.contactsapp.ui.family
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.contactsapp.data.entity.Persons
+import com.example.contactsapp.data.repository.PersonDaoRepository
+import com.example.contactsapp.util.PersonInteractions
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
-class FamilyViewModel : ViewModel() {
+@HiltViewModel
+class FamilyViewModel @Inject constructor(val repository: PersonDaoRepository ) : ViewModel(),
+    PersonInteractions {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is Family Fragment"
+    val navigateToDetailsEvent = MutableLiveData<Persons?>()
+
+
+    override fun deletePerson(person: Persons) {
+        viewModelScope.launch {
+            repository.deletePerson(person)
+            loadPersons()
+        }
     }
-    val text: LiveData<String> = _text
+
+    override fun searchPerson(search: String) {
+        viewModelScope.launch {
+            repository.searchGroupPerson(listOf("Family"), search)
+        }
+    }
+
+    override fun loadPersons(){
+        viewModelScope.launch {
+            repository.getPersonsByGroup("Family")
+        }
+    }
+
+    override fun navigateToDetails(person: Persons) {
+        navigateToDetailsEvent.value = person
+    }
+
+    fun resetNavigateToDetailsEvent() {
+        navigateToDetailsEvent.value = null
+    }
 }

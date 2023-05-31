@@ -9,15 +9,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.contactsapp.R
 import com.example.contactsapp.data.entity.Persons
 import com.example.contactsapp.databinding.CardItemBinding
+import com.example.contactsapp.ui.family.FamilyViewModel
 import com.example.contactsapp.ui.home.HomeFragmentDirections
 import com.example.contactsapp.ui.home.HomeViewModel
+import com.example.contactsapp.util.PersonInteractions
 import com.example.contactsapp.util.skip
 import com.google.android.material.snackbar.Snackbar
 
 class PersonsAdapter(var mContext: Context,
-                     var PersonList: List<Persons>, var viewModel: HomeViewModel
-) :
-    RecyclerView.Adapter<PersonsAdapter.CardDesignHolder>() {
+                     var PersonList: List<Persons>, var viewModel: PersonInteractions,
+) : RecyclerView.Adapter<PersonsAdapter.CardDesignHolder>() {
     inner class CardDesignHolder(design: CardItemBinding) : RecyclerView.ViewHolder(design.root) {
         var design : CardItemBinding
         init {
@@ -42,8 +43,7 @@ class PersonsAdapter(var mContext: Context,
         design.personObject = person
 
         design.itemcard.setOnClickListener {
-            val nav = HomeFragmentDirections.actionHomeFragmentToDetailFragment(person)
-            Navigation.skip(it, nav)
+            viewModel.navigateToDetails(person)
         }
 
         design.deleteImg.setOnClickListener {

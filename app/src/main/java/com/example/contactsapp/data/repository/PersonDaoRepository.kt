@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 
 class PersonDaoRepository (private val personsDao: PersonsDao) {
     val personsList = MutableLiveData<List<Persons>>()
+    val personsByGroup = MutableLiveData<List<Persons>>()
 
     init {
         getAllPersons()
@@ -42,9 +43,22 @@ class PersonDaoRepository (private val personsDao: PersonsDao) {
         }
     }
 
+    fun searchGroupPerson(groups: List<String>, searchQuery: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val persons = personsDao.searchPersonByGroup(groups, "%$searchQuery%")
+            personsByGroup.postValue(persons)
+        }
+    }
+
     fun getAllPersons(){
         CoroutineScope(Dispatchers.IO).launch {
             personsList.postValue(personsDao.getAllPerson())
         }
+    }
+
+    suspend fun getPersonsByGroup(group: String): List<Persons> {
+        val persons = personsDao.getPersonsByGroup(group)
+        personsByGroup.postValue(persons)
+        return persons
     }
 }
