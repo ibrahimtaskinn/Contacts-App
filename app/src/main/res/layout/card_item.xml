@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="5dp"
-            app:cardBackgroundColor="@color/cascading_white">
+            app:cardBackgroundColor="@color/pearl_white">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -31,7 +31,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:text='@{personObject.person_name+" - "+personObject.person_number}'
+                    android:text='@{personObject.person_name+" / "+personObject.person_number}'
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -56,6 +59,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="@{personObject.person_group}"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
                     app:layout_constraintEnd_toStartOf="@+id/delete_img"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

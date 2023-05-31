@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="cascading_white">#f9f5f5</color>
+    <color name="pearl_white">#F8F8FF</color>
+    <color name="toolbar_color">#1900fe</color>
 </resources>

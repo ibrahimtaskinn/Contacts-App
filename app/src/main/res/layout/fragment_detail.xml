@@ -5,8 +5,6 @@
 
     <data>
         <variable
-            name="detailToolbarTitle" type="String" />
-        <variable
             name="detailFragment" type="com.example.contactsapp.ui.detail.DetailFragment" />
         <variable
             name="personObject" type="com.example.contactsapp.data.entity.Persons" />
@@ -24,6 +22,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="128dp"
             android:layout_marginEnd="32dp"
+            app:boxBackgroundColor="@color/cascading_white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -32,7 +31,7 @@
                 android:id="@+id/editTexPersonName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Person Name"
+                android:hint="@string/person_name"
                 android:text="@{personObject.person_name}" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -43,6 +42,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
+            app:boxBackgroundColor="@color/cascading_white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detailspinner">
@@ -51,7 +51,7 @@
                 android:id="@+id/editTextPersonNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Phone Number "
+                android:hint="@string/phone_number"
                 android:text="@{personObject.person_number}" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,7 +63,9 @@
             android:layout_marginTop="64dp"
             android:layout_marginEnd="32dp"
             android:onClick="@{() -> detailFragment.btnupdate(personObject.person_id, editTexPersonName.getText().toString(), editTextPersonNumber.getText().toString(), detailspinner.getSelectedItem().toString())}"
-            android:text="Update"
+            android:text="@string/update"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/pearl_white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +80,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:entries="@array/groups"
-            android:background="@android:color/transparent"
+            android:background="@color/cascading_white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"

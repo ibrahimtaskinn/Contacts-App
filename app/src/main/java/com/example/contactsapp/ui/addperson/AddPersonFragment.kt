@@ -45,4 +45,5 @@ class AddPersonFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
