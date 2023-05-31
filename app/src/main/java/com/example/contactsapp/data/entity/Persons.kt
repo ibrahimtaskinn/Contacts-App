@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.jetbrains.annotations.NotNull
 import java.io.Serializable
+import java.util.Date
 
 @Entity(tableName = "Persons")
 data class Persons(
@@ -19,7 +20,10 @@ data class Persons(
     @NotNull var person_number: String = "",
 
     @ColumnInfo(name = "person_group")
-    @NotNull var person_group: String = ""
+    @NotNull var person_group: String = "",
+
+    @ColumnInfo(name = "createdAt")
+    @NotNull var createdAt: Date = Date()
 
 ) : Serializable
 

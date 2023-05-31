@@ -39,25 +39,27 @@ class PersonDaoRepository (private val personsDao: PersonsDao) {
 
     fun searchPerson(searchQuery: String){
         CoroutineScope(Dispatchers.IO).launch {
-            personsList.postValue(personsDao.searchPerson("%$searchQuery%"))
+            val persons = personsDao.searchPerson("%$searchQuery%").sortedByDescending { it.createdAt }
+            personsList.postValue(persons)
         }
     }
 
     fun searchGroupPerson(groups: List<String>, searchQuery: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            val persons = personsDao.searchPersonByGroup(groups, "%$searchQuery%")
+            val persons = personsDao.searchPersonByGroup(groups, "%$searchQuery%").sortedByDescending { it.createdAt }
             personsByGroup.postValue(persons)
         }
     }
 
     fun getAllPersons(){
         CoroutineScope(Dispatchers.IO).launch {
-            personsList.postValue(personsDao.getAllPerson())
+            val persons = personsDao.getAllPerson().sortedByDescending { it.createdAt }
+            personsList.postValue(persons)
         }
     }
 
     suspend fun getPersonsByGroup(group: String): List<Persons> {
-        val persons = personsDao.getPersonsByGroup(group)
+        val persons = personsDao.getPersonsByGroup(group).sortedByDescending { it.createdAt }
         personsByGroup.postValue(persons)
         return persons
     }
