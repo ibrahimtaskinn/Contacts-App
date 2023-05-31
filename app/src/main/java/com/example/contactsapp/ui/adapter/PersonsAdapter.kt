@@ -4,16 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.contactsapp.R
 import com.example.contactsapp.data.entity.Persons
 import com.example.contactsapp.databinding.CardItemBinding
-import com.example.contactsapp.ui.family.FamilyViewModel
-import com.example.contactsapp.ui.home.HomeFragmentDirections
-import com.example.contactsapp.ui.home.HomeViewModel
 import com.example.contactsapp.util.PersonInteractions
-import com.example.contactsapp.util.skip
 import com.google.android.material.snackbar.Snackbar
 
 class PersonsAdapter(var mContext: Context,

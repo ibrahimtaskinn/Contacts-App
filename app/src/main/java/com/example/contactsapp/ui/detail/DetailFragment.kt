@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.contactsapp.R
 import com.example.contactsapp.databinding.FragmentDetailBinding
-import com.example.contactsapp.ui.detail.DetailFragmentDirections.actionDetailFragmentToNavHome
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,9 +25,7 @@ class DetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
-
         binding.detailFragment = this
-        //binding.detailToolbarTitle = "Kişi Detay"
 
         val bundle: DetailFragmentArgs by navArgs()
         val getPerson = bundle.person

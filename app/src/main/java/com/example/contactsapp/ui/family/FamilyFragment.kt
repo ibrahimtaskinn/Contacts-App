@@ -40,7 +40,6 @@ class FamilyFragment : Fragment(), SearchView.OnQueryTextListener {
             binding.personsAdapter = adapter
         }
 
-        // Add observer for navigation event
         viewModel.navigateToDetailsEvent.observe(viewLifecycleOwner, { person ->
             person?.let {
                 val nav = FamilyFragmentDirections.actionNavFamilyToDetailFragment(it)

@@ -16,11 +16,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.contactsapp.R
-import com.example.contactsapp.databinding.FragmentSocialBinding
 import com.example.contactsapp.databinding.FragmentWorkBinding
 import com.example.contactsapp.ui.adapter.PersonsAdapter
-import com.example.contactsapp.ui.social.SocialFragmentDirections
-import com.example.contactsapp.ui.social.SocialViewModel
 import com.example.contactsapp.util.skip
 import dagger.hilt.android.AndroidEntryPoint
 

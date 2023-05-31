@@ -3,11 +3,9 @@ package com.example.contactsapp.ui.home
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.Navigation
 import com.example.contactsapp.data.entity.Persons
 import com.example.contactsapp.data.repository.PersonDaoRepository
 import com.example.contactsapp.util.PersonInteractions
-import com.example.contactsapp.util.skip
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
